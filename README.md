@@ -4,10 +4,10 @@
 
 **Dưới đây là hình ảnh demo thực tế khi sử dụng**
 
-[Hình ảnh 1](https://i.imgur.com/Msnz7L2.jpg)
-[Hình ảnh 2](https://i.imgur.com/jMptSNg.jpg)
-[Hình ảnh 3](https://i.imgur.com/8aCIAHf.jpg)
-[Hình ảnh 4](https://i.imgur.com/ZMLJDuL.jpg)
+![Hình ảnh 1](https://i.imgur.com/Msnz7L2.jpg)
+![Hình ảnh 2](https://i.imgur.com/jMptSNg.jpg)
+![Hình ảnh 3](https://i.imgur.com/8aCIAHf.jpg)
+![Hình ảnh 4](https://i.imgur.com/ZMLJDuL.jpg)
 
 ## Hướng dẫn cài đặt và sử dụng
 
