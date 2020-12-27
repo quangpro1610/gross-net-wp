@@ -1,6 +1,6 @@
 # WordPress Plugin - Công cụ tính lương Gross sang Net và ngược lại
 
-*Đây là phiên bản mình viết lại để sử dụng cho website nền tảng là WordPress - Phiên bản gốc tại tang TopCV*
+*Đây là phiên bản mình viết lại để sử dụng cho website nền tảng là WordPress - Phiên bản gốc tại trang [TopCV](https://www.topcv.vn/tinh-luong-gross-net)*
 
 **Dưới đây là hình ảnh demo thực tế khi sử dụng**
 
