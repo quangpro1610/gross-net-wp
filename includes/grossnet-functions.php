@@ -1,27 +1,13 @@
 <?php
 if ( !function_exists( 'grossnet_enqueue_script' ) ) {
 	function grossnet_enqueue_script(){
-		$page_slug = get_option('page_slug');
-		$page_slug_arr = !empty( $page_slug ) ? explode(',', $page_slug) : [];
-		if(is_page( $page_slug_arr ) ){
-
-			/*Theme twentytwenty*/
+		if(is_page( array( 'gross-net-2020') ) ){
 			wp_dequeue_style( 'twentytwenty-style');
 			wp_deregister_style('twentytwenty-style');
 			wp_dequeue_style( 'twentytwenty-style-inline');
 			wp_deregister_style('twentytwenty-style-inline');
 			wp_dequeue_style( 'twentytwenty-print-style');
 			wp_deregister_style('twentytwenty-print-style');
-
-			/*Theme twentynineteen*/
-			wp_dequeue_style( 'twentynineteen-style');
-			wp_deregister_style('twentynineteen-style');
-			wp_dequeue_style( 'twentynineteen-style-inline');
-			wp_deregister_style('twentynineteen-style-inline');
-			wp_dequeue_style( 'twentynineteen-print-style');
-			wp_deregister_style('twentynineteen-print-style');
-
-			echo '<style>.site-header, .site-footer{display:none !important;}</style>';
 		}
 		wp_dequeue_script( 'jquery' );
 		wp_enqueue_style( 'bootstrap', plugin_dir_url( __DIR__ ) . 'public/css/bootstrap.min.css', array(), null);
@@ -51,7 +37,7 @@ if ( !function_exists( 'grossnet_form' ) ) {
 		?>
 		<div class="container" id="salary-content">
 			<div class="main-content">
-				<h1 style="text-align: center;">Công cụ chuyển đổi lương <br> Gross - Net &amp; Net - Gross chuẩn năm <?php echo date('Y'); ?></h1>
+				<h1>Salary Tool Gross - Net &amp; Net - Gross</h1>
 				<p class="small">Áp dụng mức giảm trừ gia cảnh mới nhất 11 triệu đồng/tháng (132 triệu đồng/năm) với nguời nộp thuế và 4,4 triệu đồng/tháng với mỗi người phụ thuộc (Theo Nghị quyết số 954/2020/UBTVQH14)</p>
 				<p class="small">
 					Áp dụng mức lương <a href="#" data-toggle="modal" data-target="#modal-salary-detail">tối thiểu vùng</a> mới nhất có hiệu lực từ ngày 1/1/2020 (Theo điều 3, Nghị định 90/2019/NĐ-CP)
@@ -384,60 +370,4 @@ if ( !function_exists( 'grossnet_form' ) ) {
 		return ob_get_clean();
 	}
 	add_shortcode('grossnet_form', 'grossnet_form');
-}
-
-if ( !function_exists( 'grossnet_add_plugin_option_page' ) ) {
-	add_action('admin_menu', 'grossnet_add_plugin_option_page');
-	function grossnet_add_plugin_option_page(){
-		add_submenu_page(
-			'options-general.php', 
-			'Groos Net Settings', 
-			'Groos Net Settings',
-		    'manage_options', 
-		    'grossnet-settings',
-		    'grossnet_ref_page_callback'
-		);
-	}
-
-	/**
-	 * Display callback for the submenu page.
-	 */
-	function grossnet_ref_page_callback() {
-	    ?>
-	    <div class="wrap">
-	        <h1>General Settings</h1>
-	        <form action="#" method="post">
-	        	<table class="form-table">
-	        		<tbody>
-	        			<tr>
-	    					<th scope="row"><label for="page_slug">Page Slug</label></th>
-	    					<td>
-	    						<input name="page_slug" type="text" id="page_slug" value="<?php echo get_option('page_slug'); ?>" class="regular-text" />
-						        <p class="description">
-						        	Nhập đường dẫn của page để cấu hình loại bỏ các style không cần thiết.(Chỉ áp dụng cho trang này, có thể chấp nhận nhiều trang, được phân cách với nhau bằng dấu phẩy. VD: trang-1,trang-2)
-						        </p>
-	    					</td>
-	        			</tr>
-	        		</tbody>
-	        	</table>
-	        	<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p>
-	        </form>
-	    </div>
-	    <?php
-	}
-}
-
-if ( !function_exists( 'grossnet_save_data_settings' ) ) {
-	add_action('admin_notices', 'grossnet_save_data_settings');
-	function grossnet_save_data_settings(){
-		$admin_page = get_current_screen();
-		if( $admin_page->base == 'settings_page_grossnet-settings' ){
-			if( isset($_POST['submit']) ){
-		    	if(!empty($_POST['page_slug'])){
-		    		update_option( 'page_slug', $_POST['page_slug'] );
-		    	}
-		    	echo '<div class="notice notice-success is-dismissible"><p>Đã lưu thay đổi cài đặt.</p></div>';	
-		    }
-		}
-	}
 }
