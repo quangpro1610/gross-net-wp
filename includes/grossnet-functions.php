@@ -26,7 +26,7 @@ if ( !function_exists( 'grossnet_enqueue_script' ) ) {
 		wp_dequeue_script( 'jquery' );
 		wp_enqueue_style( 'bootstrap', plugin_dir_url( __DIR__ ) . 'public/css/bootstrap.min.css', array(), null);
 		wp_enqueue_style( 'sweetalert2_css', plugin_dir_url( __DIR__ ) . 'public/css/sweetalert2.min.css', array(), null);
-		wp_enqueue_style( 'custom', plugin_dir_url( __DIR__ ) . 'public/css/custom.css', array(), null);
+		wp_enqueue_style( 'grossnetstyle', plugin_dir_url( __DIR__ ) . 'public/css/grossnet.css', array(), null);
 
 		wp_enqueue_script( 'main-jquery', 'https://code.jquery.com/jquery-1.12.4.min.js', array(), null);
 		wp_enqueue_script( 'bootstrap_js', plugin_dir_url( __DIR__ ) . 'public/js/bootstrap.min.js', array('main-jquery'), null, true);
@@ -51,7 +51,7 @@ if ( !function_exists( 'grossnet_form' ) ) {
 		?>
 		<div class="container" id="salary-content">
 			<div class="main-content">
-				<h1 style="text-align: center;">Công cụ chuyển đổi lương <br> Gross - Net &amp; Net - Gross chuẩn năm <?php echo date('Y'); ?></h1>
+				<h2>Công cụ chuyển đổi lương <br> Gross - Net &amp; Net - Gross chuẩn <br> năm <?php echo date('Y'); ?></h1>
 				<p class="small">Áp dụng mức giảm trừ gia cảnh mới nhất 11 triệu đồng/tháng (132 triệu đồng/năm) với nguời nộp thuế và 4,4 triệu đồng/tháng với mỗi người phụ thuộc (Theo Nghị quyết số 954/2020/UBTVQH14)</p>
 				<p class="small">
 					Áp dụng mức lương <a href="#" data-toggle="modal" data-target="#modal-salary-detail">tối thiểu vùng</a> mới nhất có hiệu lực từ ngày 1/1/2020 (Theo điều 3, Nghị định 90/2019/NĐ-CP)
@@ -158,8 +158,8 @@ if ( !function_exists( 'grossnet_form' ) ) {
 						</div>
 					</div>
 					<div class="form-group text-center">
-						<input type="submit" name="groos_net" class="btn btn-success" value="GROSS → NET"/>
-						<input type="submit" name="net_groos" class="btn btn-warning" value="NET → GROSS"/>
+						<input type="submit" name="groos_net" class="btn btn-grossnet btn-gross" value="GROSS → NET"/>
+						<input type="submit" name="net_groos" class="btn btn-grossnet btn-net" value="NET → GROSS"/>
 						<input type="hidden" name="action" value="groos_net_calculation"/>
 						<input type="hidden" name="my_type" value=""/>
 					</div>
